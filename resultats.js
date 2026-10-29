@@ -1,29 +1,35 @@
-window.onload = function () {
+function exportCSV() {
 
-    let rows = document.querySelectorAll("#resultsTable tbody tr");
+let table = document.getElementById("resultsTable");
 
-    rows.forEach(row => {
+let rows = table.querySelectorAll("tr");
 
-        let model = row.children[3].innerText;
-        let student = row.children[4].innerText;
-        let analyseCell = row.children[5];
+let csv = [];
 
-        fetch("analyse.php", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: "model=" + encodeURIComponent(model) +
-                  "&student=" + encodeURIComponent(student)
-        })
-        .then(response => response.text())
-        .then(data => {
-            analyseCell.innerText = data;
-        })
-        .catch(() => {
-            analyseCell.innerText = "❌ erreur";
-        });
+rows.forEach(row => {
 
-    });
+let cols = row.querySelectorAll("th, td");
 
-};
+let rowData = [];
+
+cols.forEach(col => {
+rowData.push(col.innerText);
+});
+
+csv.push(rowData.join(","));
+
+});
+
+let csvFile = new Blob([csv.join("\n")], { type: "text/csv" });
+
+let downloadLink = document.createElement("a");
+
+downloadLink.download = "resultats.csv";
+downloadLink.href = window.URL.createObjectURL(csvFile);
+downloadLink.style.display = "none";
+
+document.body.appendChild(downloadLink);
+
+downloadLink.click();
+
+}

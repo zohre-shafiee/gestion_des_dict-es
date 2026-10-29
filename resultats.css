@@ -1,5 +1,6 @@
 /* =====================================================
    RESULTATS.CSS — Gestion des Dictées
+   Style de la page des résultats
 ===================================================== */
 
 * {
@@ -182,13 +183,12 @@ button {
 .table-container {
   background: white;
   border-radius: 12px;
-  overflow-x: auto;
+  overflow: hidden;
   border: 1px solid #D6E0EA;
 }
 
 table {
   width: 100%;
-  min-width: 1500px;
   border-collapse: collapse;
 }
 
@@ -204,20 +204,6 @@ td {
   padding: 15px;
   border-top: 1px solid #E5EDF5;
   font-size: 0.9rem;
-  vertical-align: top;
-}
-
-.dictee {
-  min-width: 380px;
-  max-width: 420px;
-  white-space: normal;
-  line-height: 1.35;
-  word-break: break-word;
-}
-
-.error {
-  color: #D93025;
-  font-weight: 700;
 }
 
 /* =====================================================
@@ -234,9 +220,42 @@ footer {
   line-height: 1.8;
 }
 
+/* =====================================================
+   LIEN RETOUR
+===================================================== */
+
+.retour {
+  display: inline-block;
+  margin-bottom: 15px;
+  color: #1E3F5A;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.retour:hover {
+  text-decoration: underline;
+}
+
+/* =====================================================
+   CELLULES TABLEAU
+===================================================== */
+
+.error {
+  color: #C0392B;
+  font-weight: 500;
+}
+
+.dictee {
+  max-width: 200px;
+  word-wrap: break-word;
+  font-size: 0.85rem;
+  color: #555;
+}
 
 .analyse {
-  white-space: pre-line;
-  font-size: 0.85rem;
-  color: #d93025;
+  max-width: 250px;
+  word-wrap: break-word;
+  font-size: 0.82rem;
+  color: #444;
+  white-space: pre-wrap;
 }

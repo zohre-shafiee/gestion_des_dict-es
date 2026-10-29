@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupération et nettoyage des valeurs du formulaire
     $identifiant  = trim($_POST["identifiant"]);
     $email        = trim($_POST["email"]);
-    $mot_de_passe = trim($_POST["mot_de_passe"]);
+    $mot_de_passe = $_POST["mot_de_passe"];
     $role         = trim($_POST["role"]);
     $institution  = isset($_POST["institution"]) ? trim($_POST["institution"]) : NULL;
 
@@ -47,13 +47,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $erreur = "Cet identifiant existe déjà.";
       } else {
 
-            // Insertion du nouvel utilisateur
+            // Store a one-way password hash rather than the plaintext password.
+            $mot_de_passe_hash = password_hash($mot_de_passe, PASSWORD_DEFAULT);
+
             $sql  = "INSERT INTO g1_utilisateur (identifiant, email, mot_de_passe, role, institution)
                     VALUES (?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-
-            // "sssss" = five strings
-            $stmt->bind_param("sssss", $identifiant, $email, $mot_de_passe, $role, $institution);
+            $stmt->bind_param("sssss", $identifiant, $email, $mot_de_passe_hash, $role, $institution);
 
             if ($stmt->execute()) {
                 $succes = "Compte créé avec succès !";
@@ -132,8 +132,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- PIED DE PAGE -->
 <footer>
   Gestion des Dictées — Université Grenoble Alpes<br>
-  Projet réalisé par : Ana Laura Donega-Cantuaria, Catherine Kovach, Darya Zdrelyuk, Ekaterina Leonova, Zohre Shafiee<br>
-  M1 Industrie de la Langue — 2025-2026
+M1 Industrie de la Langue — 2025-2026
 </footer>
 
 <script>

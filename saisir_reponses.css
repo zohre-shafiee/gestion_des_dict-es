@@ -46,3 +46,88 @@ input, select, textarea {
 .erreur { background: #FDF0EF; color: #C0392B; border: 1px solid #F9D6D3; }
 
 footer { text-align: center; padding: 40px; color: #6B8299; font-size: 0.8rem; }
+
+
+/* New button to automatically analyze the text */
+.btn-analyser {
+    margin-top: 10px; /* Keeps it close to the text area */
+    width: 100%;      /* Makes it stretch across the whole box like the save button */
+    padding: 15px;
+    border-radius: 8px;
+    border: none;
+    background: #3D8C84; /* The exact green used for btn-save */
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-analyser:hover { 
+    background: #2C5F8A; /* A slightly darker shade for when the mouse hovers over it */
+}
+
+.btn-analyser:disabled { 
+    background: #D6E0EA; 
+    color: #6B8299; 
+    cursor: not-allowed; 
+}
+/* .btn-analyser {
+    background: #F3E5F5;
+    color: #6A1B9A;
+    border: 1px solid #CE93D8;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 10px;
+    display: inline-block;
+    transition: all 0.2s;
+}
+
+.btn-analyser:hover { 
+    background: #E1BEE7; 
+}
+
+.btn-analyser:disabled { 
+    background: #f0f0f0; 
+    color: #999; 
+    border-color: #ddd; 
+    cursor: not-allowed; 
+} */
+
+.score-box {
+    background: #E3F2FD;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #90CAF9;
+    margin-top: 20px;
+}
+
+.score-box label { 
+    color: #1565C0; 
+    font-weight: 700; 
+    font-size: 1.1rem; 
+}
+
+.score-box input { 
+    border-color: #90CAF9; 
+    font-size: 1.2rem; 
+    font-weight: bold; 
+    color: #1565C0; 
+    width: 100px; 
+}
+.btn-deconnexion {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid #D6E0EA;
+  background: white;
+  color: #6B8299;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn-deconnexion:hover {
+  background: #F4F6F9;
+}

@@ -15,8 +15,8 @@ require "config.php";
 // VÉRIFICATION DE SESSION
 // =====================================================
 
-// Si pas connecté → retour à la page de connexion
-if (!isset($_SESSION["id"])) {
+// Si pas connecté ou si le rôle n'est pas professeur → retour à la page de connexion
+if (!isset($_SESSION["id"]) || ($_SESSION["role"] ?? "") !== "professeur") {
     header("Location: index.php");
     exit();
 }
@@ -231,8 +231,7 @@ $classes = $result->fetch_all(MYSQLI_ASSOC);
 <!-- PIED DE PAGE -->
 <footer>
   Gestion des Dictées — Université Grenoble Alpes<br>
-  Projet réalisé par : Ana Laura Donega-Cantuaria, Catherine Kovach, Darya Zdrelyuk, Ekaterina Leonova, Zohre Shafiee<br>
-  M1 Industrie de la Langue — 2025-2026
+M1 Industrie de la Langue — 2025-2026
 </footer>
 
 <script>
